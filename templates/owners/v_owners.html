@@ -1,0 +1,131 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- css -->
+    <link rel="stylesheet" href="{% static 'v_owners.css'%}">
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <title>Owners</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <h1>Owners</h1>
+        </div>
+        <div class="navigation">
+            <!-- modal button -->
+            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Tambah
+            </button>
+            <!-- modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Tambah Owner</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="">
+                                <div class="mb-3">
+                                    <label for="" class="form-label">Id</label>
+                                    <input type="text" class="form-control" maxlength="100" name="owner_id" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="" class="form-label">Nama Lengkap</label>
+                                    <input type="text" class="form-control" maxlength="249" name="owner_name" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="" class="form-label">Password</label>
+                                    <input type="text" class="form-control" maxlength="249" name="owner_pass" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="" class="form-label">Timestamp</label>
+                                    <input type="datetime-local" value="2024-01-12T12:00" class="form-control" >
+                                </div>
+                                <button type="button" data-bs-dismiss="modal">Close</button>
+                                <button type="submit">Next</button>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <a href="">
+                <button>
+                    Convert To Excel
+                </button>
+            </a>
+            <a href="">
+                <button>
+                    Convert To Pdf
+                </button>
+            </a>
+            <label for="">Filter</label>
+            <select name="filter" id="filter">
+                <option value="semua">Semua</option>
+                <option value="Tono">Tono</option>
+                <option value="Alex">Alex</option>
+                <option value="Any">Any</option>
+            </select>
+            <label for="">Cari</label>
+            <input type="search" id="serach">
+        </div>
+        <div class="content">
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>NAMA</th>
+                        <th>PASSWORD</th>
+                        <th>ADDRESS</th>
+                        <th>TELEPON</th>
+                        <th>EMAIL</th>
+                        <th>AKSI</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        {% for d in data_owners %}
+                        <td>{{d.owner_id}}</td>
+                        <td>{{d.owner_name}}</td>
+                        <td>{{d.owner_pass}}</td>
+                        <td>{{d.owner_address}}</td>
+                        <td>{{d.owner_tel}}</td>
+                        <td>{{d.owner_email}}</td>
+                        <td>
+                            <a href="">
+                                <button>
+                                    Edit
+                                </button>
+                            </a>
+                            <a href="">
+                                <button>
+                                    Hapus
+                                </button>
+                            </a>
+                        </td>
+                        {% endfor %}
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>
